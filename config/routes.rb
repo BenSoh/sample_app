@@ -1,9 +1,12 @@
 SampleApp::Application.routes.draw do
-  get "users/new"
+  #get "users/new" #comment out in Listing 7.3
   #get "static_pages/home"
   #get "static_pages/help"
   #get "static_pages/about"
   #get "static_pages/contact"
+ 
+  resources :users 
+  #In Listing 7.3 This is because resources :users doesn’t just add a working /users/1 URL; it endows our sample application with all the actions needed for a RESTful Users resource,5 along with a large number of named routes (Section 5.3.3) for generating user URLs.
   
   root 'static_pages#home'
   #match '/home', to: 'static_pages#home', via: 'get'
@@ -12,6 +15,8 @@ SampleApp::Application.routes.draw do
   match '/about', to: 'static_pages#about', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
     
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
